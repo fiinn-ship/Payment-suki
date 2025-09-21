@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway - E-Wallet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f8fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            background-color: #4a6cf7;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .payment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .dana-logo {
+            background-color: #1087e2;
+        }
+        
+        .gopay-logo {
+            background-color: #00aae5;
+        }
+        
+        .ovo-logo {
+            background-color: #4c2a86;
+        }
+        
+        h2 {
+            font-size: 22px;
+        }
+        
+        .payment-details {
+            margin-top: 15px;
+        }
+        
+        .account-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #4a6cf7;
+        }
+        
+        .instructions {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e8f4fc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+        }
+        
+        .copy-btn {
+            background-color: #4a6cf7;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: #3a5cd8;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .account-number {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pembayaran E-Wallet</h1>
+            <p>Pilih metode pembayaran e-wallet yang Anda inginkan</p>
+        </header>
+        
+        <div class="payment-options">
+            <div class="payment-card">
+                <div class="payment-header">
+                    <div class="logo dana-logo">D</div>
+                    <h2>DANA</h2>
+                </div>
+                <div class="payment-details">
+                    <p>Transfer ke nomor DANA berikut:</p>
+                    <div class="account-number" id="dana-account">082174301182</div>
+                    <button class="copy-btn" onclick="copyToClipboard('dana-account')">Salin Nomor</button>
+                    <div class="instructions">
+                        <p><strong>Cara pembayaran:</strong></p>
+                        <ol>
+                            <li>Buka aplikasi DANA</li>
+                            <li>Pilih "Kirim" atau "Transfer"</li>
+                            <li>Masukkan nomor di atas</li>
+                            <li>Masukkan jumlah transfer</li>
+                            <li>Konfirmasi dan selesaikan pembayaran</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-card">
+                <div class="payment-header">
+                    <div class="logo gopay-logo">G</div>
+                    <h2>GoPay</h2>
+                </div>
+                <div class="payment-details">
+                    <p>Transfer ke nomor GoPay berikut:</p>
+                    <div class="account-number" id="gopay-account">082174301182</div>
+                    <button class="copy-btn" onclick="copyToClipboard('gopay-account')">Salin Nomor</button>
+                    <div class="instructions">
+                        <p><strong>Cara pembayaran:</strong></p>
+                        <ol>
+                            <li>Buka aplikasi Gojek</li>
+                            <li>Pilih "Bayar" atau "Transfer"</li>
+                            <li>Masukkan nomor di atas</li>
+                            <li>Masukkan jumlah transfer</li>
+                            <li>Konfirmasi dan selesaikan pembayaran</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-card">
+                <div class="payment-header">
+                    <div class="logo ovo-logo">O</div>
+                    <h2>OVO</h2>
+                </div>
+                <div class="payment-details">
+                    <p>Transfer ke nomor OVO berikut:</p>
+                    <div class="account-number" id="ovo-account">082174301182</div>
+                    <button class="copy-btn" onclick="copyToClipboard('ovo-account')">Salin Nomor</button>
+                    <div class="instructions">
+                        <p><strong>Cara pembayaran:</strong></p>
+                        <ol>
+                            <li>Buka aplikasi OVO</li>
+                            <li>Pilih "Transfer"</li>
+                            <li>Masukkan nomor di atas</li>
+                            <li>Masukkan jumlah transfer</li>
+                            <li>Konfirmasi dan selesaikan pembayaran</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 Payment Gateway. Jika sudah melakukan pembayaran, harap konfirmasi melalui WhatsApp ke 082174301182</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(accountId) {
+            const accountElement = document.getElementById(accountId);
+            const accountNumber = accountElement.textContent;
+            
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = accountNumber;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            
+            alert('Nomor berhasil disalin: ' + accountNumber);
+        }
+    </script>
+</body>
+</html>
